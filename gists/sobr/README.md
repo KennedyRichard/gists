@@ -11,13 +11,17 @@ https://github.com/user-attachments/assets/a897eb7e-d2c6-407e-8f83-87bbe05224db
 
 ## Requirements
 
-Python's third-party library [Textual](https://textual.textualize.io/).
+There are 02 requirements.
+
+The first one is Python's third-party library [Textual](https://textual.textualize.io/).
 
 ```
 pip install textual
 ```
 
 If you want, [check this](https://textual.textualize.io/getting_started/#installation) for more options and other installation instructions.
+
+The second requirement is a command line utility from your system to play the audio files. In my GNU/Linux system I use `paplay`. Please, search the web for a command line utility on your system that can be used to play audio. Once you have its name, you just have to replace `paplay`'s name inside the [sobr.py](./sobr.py) script with the name of the tool you want to use.
 
 
 ## Usage
@@ -34,6 +38,8 @@ options:
   --volume VOLUME
   --columns COLUMNS
 ```
+
+Within the [sobr.py](./sobr.py) script, you can also change the extensions recognized as sound files.
 
 ## Setup
 
