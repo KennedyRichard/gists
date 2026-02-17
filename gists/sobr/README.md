@@ -6,6 +6,8 @@ A tiny sound browser TUI (terminal user interface) made with Python and [Textual
 
 ![sobr screenshot](https://i.imgur.com/dsZmxiB.png)
 
+https://github.com/user-attachments/assets/a897eb7e-d2c6-407e-8f83-87bbe05224db
+
 
 ## Requirements
 
