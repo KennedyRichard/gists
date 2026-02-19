@@ -8,6 +8,8 @@ from itertools import chain
 
 from subprocess import run
 
+from shlex import split
+
 
 ### third-party imports
 
@@ -179,7 +181,7 @@ class ButtonsApp(App[str]):
 
             )
 
-            run(f'paplay {filename} --volume={volume}'.split())
+            run(split(f'paplay "{filename}" --volume={volume}'))
             
 
 def isint(text):
