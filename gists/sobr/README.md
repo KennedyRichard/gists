@@ -29,12 +29,13 @@ The second requirement is a command line utility from your system to play the au
 To learn how to use `sobr`, just execute `sobr -h` in your terminal. The following message will appear:
 
 ```
-usage: sobr [-h] [--volume VOLUME] [--columns COLUMNS]
+usage: sobr [-h] [-d DIRECTORY] [--volume VOLUME] [--columns COLUMNS]
 
 sobr - sound browser to play sound files from current folder
 
 options:
-  -h, --help         show this help message and exit
+  -h, --help            show this help message and exit
+  -d DIRECTORY, --directory DIRECTORY
   --volume VOLUME
   --columns COLUMNS
 ```

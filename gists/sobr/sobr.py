@@ -17,7 +17,9 @@ from textual.app import App, ComposeResult
 
 from textual.containers import Horizontal, Vertical, VerticalScroll
 
-from textual.widgets import Static, Button, Label
+from textual.widgets import Header, Footer, Static, Button, Label
+
+from textual.binding import Binding
 
 
 
@@ -31,7 +33,7 @@ SOUND_EXTENSIONS = frozenset((
 
 
 
-class ButtonsApp(App[str]):
+class TinySoundBrowserApp(App):
     
     CSS = """
     #sidebar {
@@ -41,11 +43,15 @@ class ButtonsApp(App[str]):
     }
     """
 
-    def __init__(self, volume=70, columns=4):
+    BINDINGS = [
+        Binding(key="q", action="quit", description="Quit the app"),
+    ]
+
+    def __init__(self, directory = '.', volume=70, columns=4):
 
         super().__init__()
 
-        self.directory = Path('.')
+        self.directory = Path(directory)
 
         self.filenames = sorted(
 
@@ -89,6 +95,7 @@ class ButtonsApp(App[str]):
 
     def compose(self) -> ComposeResult:
 
+        yield Header()
         yield Horizontal(
 
             Vertical(
@@ -148,7 +155,12 @@ class ButtonsApp(App[str]):
 
         )
 
+        yield Footer()
 
+    def on_mount(self) -> None:
+
+        self.title = 'sobr'
+        self.sub_title = 'tiny sound browser'
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
 
@@ -200,13 +212,15 @@ if __name__ == "__main__":
 
     parser = ArgumentParser(description=DESCRIPTION)
 
+    parser.add_argument('-d', '--directory', type=str, default='.')
     parser.add_argument('--volume', type=int, default=70)
     parser.add_argument('--columns', type=int, default=4)
 
     parsed_args = parser.parse_args()
 
+    directory = parsed_args.directory
     volume = parsed_args.volume
     columns = parsed_args.columns
 
-    app = ButtonsApp(volume, columns)
+    app = TinySoundBrowserApp(directory, volume, columns)
     app.run()
